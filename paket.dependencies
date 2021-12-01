@@ -3,6 +3,7 @@ framework: net5.0
 storage: none
 
 nuget Fable.Remoting.Giraffe
+nuget Feliz.UseDeferred
 nuget Saturn
 nuget Expecto
 
