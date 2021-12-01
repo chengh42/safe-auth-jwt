@@ -39,14 +39,16 @@ module Route =
     let builder typeName methodName =
         sprintf "/api/%s/%s" typeName methodName
 
-type AnonymousAPI = {
-    Login : Request.Login -> Async<Response.JwtToken> // note no Result here!
-}
-with
-    static member RouteBuilder _ m = sprintf "/api/anonymous/%s" m
+type AnonymousAPI =
+    {
+        Login : Request.Login -> Async<Response.JwtToken>
+    }
+    with
+    static member RouteBuilder _ m = Route.builder "anonymous" m
 
-type SecuredAPI = {
-    GetUserInfo : unit -> Async<Response.UserInfo> // note no Result here!
-}
-with
-    static member RouteBuilder _ m = sprintf "/api/secured/%s" m
+type SecuredAPI =
+    {
+        GetUserInfo : unit -> Async<Response.UserInfo>
+    }
+    with
+    static member RouteBuilder _ m = Route.builder "secured" m
