@@ -29,11 +29,6 @@ let view (model: Model) (dispatch: Msg -> unit) =
         hero.isFullHeight
         color.isLight
         prop.children [
-            Bulma.heroHead [
-                Bulma.navbar [
-                    //
-                ]
-            ]
             Bulma.heroBody [
                 Bulma.container [
                     Bulma.column [
@@ -42,11 +37,11 @@ let view (model: Model) (dispatch: Msg -> unit) =
                         prop.children [
                             Bulma.title [
                                 text.hasTextCentered
-                                prop.text "safe_auth_jwt"
+                                prop.text "SAFE Authentication with JWT"
                             ]
                             Views.LoginView ()
-                            Html.hr [ ]
                             Views.MyProfileView ()
+                            Views.RevokeTokenButton ()
                         ]
                     ]
                 ]

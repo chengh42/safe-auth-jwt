@@ -51,7 +51,7 @@ let private tokenToResponse (t:Token) : Response.JwtToken =
 
 let private login (cfg:JwtConfiguration) (req:Request.Login) =
     task {
-        let! maybeUser = req.Email |> getUserByEmail // implement such function
+        let! maybeUser = req.Email |> getUserByEmail
         return
             maybeUser
             |> Option.bind (fun x ->

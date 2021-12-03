@@ -27,11 +27,3 @@ let onSecuredAPI =
     |> Remoting.withRouteBuilder SecuredAPI.RouteBuilder
     |> Remoting.withAuthorizationHeader (sprintf "Bearer %s" token)
     |> Remoting.buildProxy<SecuredAPI>
-
-// let onSecuredAPI (fn:SecuredAPI -> Async<'a>) =
-//     let token = Browser.WebStorage.localStorage.getItem "token"
-//     Remoting.createApi()
-//     |> Remoting.withRouteBuilder SecuredAPI.RouteBuilder
-//     |> Remoting.withAuthorizationHeader (sprintf "Bearer %s" token)
-//     |> Remoting.buildProxy<SecuredAPI>
-//     |> fn
