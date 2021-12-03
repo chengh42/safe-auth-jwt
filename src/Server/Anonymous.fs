@@ -20,14 +20,14 @@ type UserFromDb =
     // for now using hardcoded users
     static member UserBob =
         {
-            Id = System.Guid.NewGuid()
+            Id = System.Guid.Parse "d9132905-dfd0-443c-9428-c9ddd0a5e289"
             Name = "Bob"
             Email = "bob@fsharp.net"
             PwdHash = "Str0ngP@zzword4Bob" |> Password.createHash
         }
     static member UserAlice =
         {
-            Id = System.Guid.NewGuid()
+            Id = System.Guid.Parse "422b4b34-687d-4803-a78f-e3370cc07706"
             Name = "Alice"
             Email = "alice@fsharp.net"
             PwdHash = "Str0ngP@zzword4Alice" |> Password.createHash
