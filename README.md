@@ -35,8 +35,8 @@ type Startup(cfg:IConfiguration, evn:IWebHostEnvironment) =
     // read values from config or ENV vars
     let cfg =
         {
-            Audience = ""
-            Issuer = ""
+            Audience = "a non-null string"
+            Issuer = "a non-null string"
             Secret = "q4t7w!z%C*F-JaNdRgUkXn2r5u8x/A?D" // Note that secret has to be 128-bit min
             AccessTokenLifetime = TimeSpan.FromMinutes 10.
         }
