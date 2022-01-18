@@ -1,4 +1,4 @@
-module safe_auth_jwt.Server.Program
+module SafeAuthJwt.Server.Program
 
 open Microsoft.Extensions.Hosting
 open Microsoft.Extensions.Logging

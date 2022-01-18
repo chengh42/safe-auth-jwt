@@ -1,4 +1,4 @@
-﻿module safe_auth_jwt.Shared.API
+﻿module SafeAuthJwt.Shared.API
 
 type Service = {
     GetMessage : unit -> Async<string>

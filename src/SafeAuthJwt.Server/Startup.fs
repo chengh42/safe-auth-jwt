@@ -1,4 +1,4 @@
-﻿module safe_auth_jwt.Server.Startup
+﻿module SafeAuthJwt.Server.Startup
 
 open Microsoft.AspNetCore.Builder
 open Microsoft.AspNetCore.Hosting

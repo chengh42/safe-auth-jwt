@@ -1,4 +1,4 @@
-﻿module safe_auth_jwt.Client.View
+﻿module SafeAuthJwt.Client.View
 
 open Feliz
 open Router

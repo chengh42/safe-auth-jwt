@@ -1,7 +1,7 @@
-﻿module safe_auth_jwt.Client.Server
+﻿module SafeAuthJwt.Client.Server
 
 open Fable.Remoting.Client
-open safe_auth_jwt.Shared.API
+open SafeAuthJwt.Shared.API
 
 let service =
     Remoting.createApi()

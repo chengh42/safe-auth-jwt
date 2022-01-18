@@ -11,8 +11,8 @@ initializeContext()
 
 let publishPath = Path.getFullName "publish"
 let srcPath = Path.getFullName "src"
-let clientSrcPath = srcPath </> "safe_auth_jwt.Client"
-let serverSrcPath = srcPath </> "safe_auth_jwt.Server"
+let clientSrcPath = srcPath </> "SafeAuthJwt.Client"
+let serverSrcPath = srcPath </> "SafeAuthJwt.Server"
 let appPublishPath = publishPath </> "app"
 
 // Targets

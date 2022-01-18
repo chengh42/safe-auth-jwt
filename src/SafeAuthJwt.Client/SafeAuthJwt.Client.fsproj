@@ -13,7 +13,7 @@
         <Content Include="index.html" />
     </ItemGroup>
     <ItemGroup>
-        <ProjectReference Include="..\safe_auth_jwt.Shared\safe_auth_jwt.Shared.fsproj" />
+        <ProjectReference Include="..\SafeAuthJwt.Shared\SafeAuthJwt.Shared.fsproj" />
     </ItemGroup>
     <Import Project="..\..\.paket\Paket.Restore.targets" />
 </Project>

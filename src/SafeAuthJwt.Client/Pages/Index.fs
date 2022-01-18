@@ -1,10 +1,10 @@
-﻿module safe_auth_jwt.Client.Pages.Index
+﻿module SafeAuthJwt.Client.Pages.Index
 
 open Feliz
 open Feliz.DaisyUI
 open Elmish
 open Feliz.UseElmish
-open safe_auth_jwt.Client
+open SafeAuthJwt.Client
 
 type State = {
     Message : string

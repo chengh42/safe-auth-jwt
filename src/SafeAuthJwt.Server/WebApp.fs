@@ -1,9 +1,9 @@
-﻿module safe_auth_jwt.Server.WebApp
+﻿module SafeAuthJwt.Server.WebApp
 
 open Giraffe
 open Fable.Remoting.Server
 open Fable.Remoting.Giraffe
-open safe_auth_jwt.Shared.API
+open SafeAuthJwt.Shared.API
 open FSharp.Control.Tasks
 
 let service = {
