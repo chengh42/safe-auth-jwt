@@ -1,69 +1,60 @@
+open Fake
 open Fake.Core
 open Fake.IO
-open Farmer
-open Farmer.Builders
+open Fake.IO.FileSystemOperators
+open Fake.Core.TargetOperators
 
-open Helpers
+open BuildHelpers
+open BuildTools
 
 initializeContext()
 
-let sharedPath = Path.getFullName "src/Shared"
-let serverPath = Path.getFullName "src/Server"
-let clientPath = Path.getFullName "src/Client"
-let deployPath = Path.getFullName "deploy"
+let publishPath = Path.getFullName "publish"
+let srcPath = Path.getFullName "src"
+let clientSrcPath = srcPath </> "safe_auth_jwt.Client"
+let serverSrcPath = srcPath </> "safe_auth_jwt.Server"
+let appPublishPath = publishPath </> "app"
 
-Target.create "Clean" (fun _ ->
-    Shell.cleanDir deployPath
-    run dotnet "fable clean --yes" clientPath // Delete *.fs.js files created by Fable
+// Targets
+let clean proj = [ proj </> "bin"; proj </> "obj" ] |> Shell.cleanDirs
+
+Target.create "InstallClient" (fun _ ->
+    printfn "Node version:"
+    Tools.node "--version" clientSrcPath
+    printfn "Yarn version:"
+    Tools.yarn "--version" clientSrcPath
+    Tools.yarn "install --frozen-lockfile" clientSrcPath
 )
 
-Target.create "InstallClient" (fun _ -> run npm "install" ".")
-
-Target.create "Bundle" (fun _ ->
-    [ "server", dotnet $"publish -c Release -o \"{deployPath}\"" serverPath
-      "client", dotnet "fable -o output -s --run webpack -p" clientPath ]
-    |> runParallel
-)
-
-Target.create "Azure" (fun _ ->
-    let web = webApp {
-        name "safe_auth_jwt"
-        zip_deploy "deploy"
-    }
-    let deployment = arm {
-        location Location.WestEurope
-        add_resource web
-    }
-
-    deployment
-    |> Deploy.execute "safe_auth_jwt" Deploy.NoParameters
-    |> ignore
+Target.create "Publish" (fun _ ->
+    [ appPublishPath ] |> Shell.cleanDirs
+    let publishArgs = sprintf "publish -c Release -o \"%s\"" appPublishPath
+    Tools.dotnet publishArgs serverSrcPath
+    [ appPublishPath </> "appsettings.Development.json" ] |> File.deleteAll
+    Tools.yarn "build" ""
 )
 
 Target.create "Run" (fun _ ->
-    run dotnet "build" sharedPath
-    [ "server", dotnet "watch run" serverPath
-      "client", dotnet "fable watch -o output -s --run webpack-dev-server" clientPath ]
-    |> runParallel
+    let server = async {
+        Environment.setEnvironVar "ASPNETCORE_ENVIRONMENT" "Development"
+        Tools.dotnet "watch run" serverSrcPath
+    }
+    let client = async {
+        Tools.yarn "start" ""
+    }
+    [server;client]
+    |> Async.Parallel
+    |> Async.RunSynchronously
+    |> ignore
 )
-
-Target.create "Format" (fun _ ->
-    run dotnet "fantomas . -r" "src"
-)
-
-open Fake.Core.TargetOperators
 
 let dependencies = [
-    "Clean"
-        ==> "InstallClient"
-        ==> "Bundle"
-        ==> "Azure"
+    "InstallClient"
+        ==> "Publish"
 
-    "Clean"
-        ==> "InstallClient"
+    "InstallClient"
         ==> "Run"
-
 ]
 
 [<EntryPoint>]
-let main args = runOrDefault args
+let main args = runOrDefault "Run" args
