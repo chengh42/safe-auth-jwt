@@ -14,6 +14,7 @@ type Msg =
     | AskForPublicMessage
     | AskForPrivateMessage
     | MessageReceived of string
+    | ErrorReceived of exn
 
 let init () = { Message = "Click above button to get a message" }, Cmd.none
 
@@ -24,10 +25,12 @@ let update (msg:Msg) (model:State) : State * Cmd<Msg> =
     | AskForPrivateMessage ->
         let getPrivateMessage = fun (securedApi: SafeAuthJwt.Shared.API.SecuredAPI) ->
             securedApi.GetPrivateMessage ()
-        model, Cmd.OfAsync.perform (fun _ -> Server.onSecuredAPI getPrivateMessage) () MessageReceived
+        model, Cmd.OfAsync.either (fun _ -> Server.onSecuredAPI getPrivateMessage) ()
+            MessageReceived ErrorReceived
     | MessageReceived msg ->
-        printfn "msg = %A" msg
         { model with Message = msg }, Cmd.none
+    | ErrorReceived err ->
+        { model with Message = err.Message }, Cmd.none
 
 [<ReactComponent>]
 let IndexView () =
