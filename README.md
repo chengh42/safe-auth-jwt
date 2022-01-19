@@ -9,12 +9,11 @@ This web app demos authentication using Json Web Token (JWT) following [the tuto
 > * Database for users and its functions are not implemented, only used "to implement" functions
 > * Authentication is hard - don't do it manually. Use some existing service like Auth0, Azure AD, Identity Server or so.
 
-## Install pre-requisites
-
-You'll need to install the following pre-requisites in order to build SAFE applications
+## Prerequisites
 
 * [.NET Core SDK](https://www.microsoft.com/net/download) 6.0 or higher
 * [Node LTS](https://nodejs.org/en/download/)
+* [yarn](https://classic.yarnpkg.com/en/)
 
 ## How to run
 
