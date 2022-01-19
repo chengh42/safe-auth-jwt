@@ -31,9 +31,3 @@ type SecuredAPI = {
 }
 with
     static member RouteBuilder _ m = sprintf "/api/secured/%s" m
-
-// type Service = {
-//     GetMessage : unit -> Async<string>
-// }
-// with
-//     static member RouteBuilder _ m = sprintf "/api/service/%s" m
