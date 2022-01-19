@@ -1,4 +1,5 @@
-Microsoft.ApplicationInsights.AspNetCore
 Giraffe
 Fable.Remoting.Giraffe
 FsToolkit.ErrorHandling.TaskResult
+Microsoft.ApplicationInsights.AspNetCore
+Microsoft.AspNetCore.Authentication.JwtBearer

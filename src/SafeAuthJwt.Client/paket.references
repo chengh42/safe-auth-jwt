@@ -8,5 +8,6 @@ Fable.Elmish.HMR
 Feliz
 Feliz.Router
 Feliz.DaisyUI
+Feliz.UseDeferred
 Feliz.UseElmish
 

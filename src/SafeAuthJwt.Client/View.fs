@@ -27,10 +27,16 @@ let AppView (state:State) (dispatch:Msg -> unit) =
             Html.a("Home", Page.Index)
             Html.span " | "
             Html.a("About", Page.About)
+            Html.span " | "
+            Html.a("Login", Page.Login)
+            Html.span " | "
+            Html.a("MyProfile", Page.MyProfile)
         ]
     let render =
         match state.Page with
         | Page.Index -> Pages.Index.IndexView ()
+        | Page.Login -> Pages.Login.LoginView ()
+        | Page.MyProfile -> Pages.MyProfile.MyProfileView ()
         | Page.About -> Html.text "SAFEr Template"
     React.router [
         router.pathMode

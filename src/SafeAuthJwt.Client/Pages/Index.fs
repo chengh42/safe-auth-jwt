@@ -18,7 +18,7 @@ let init () = { Message = "Click me!" }, Cmd.none
 
 let update (msg:Msg) (model:State) : State * Cmd<Msg> =
     match msg with
-    | AskForMessage -> model, Cmd.OfAsync.perform Server.service.GetMessage () MessageReceived
+    | AskForMessage -> model, Cmd.none // Cmd.OfAsync.perform Server.service.GetMessage () MessageReceived
     | MessageReceived msg -> { model with Message = msg }, Cmd.none
 
 [<ReactComponent>]
