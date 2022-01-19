@@ -35,6 +35,7 @@ let private getSecuredService (ctx:HttpContext) =
     let userId = ctx.User.Claims |> Seq.find (fun x -> x.Type = "id") |> (fun x -> System.Guid x.Value)
     {
         GetUserInfo = getUserInfo userId >> Async.AwaitTask
+        GetPrivateMessage = fun () -> async { return "This is a protected message!" }
     }
 
 let securedAPI : Giraffe.Core.HttpHandler =

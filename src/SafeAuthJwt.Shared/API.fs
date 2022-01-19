@@ -20,12 +20,14 @@ module Response =
 
 type AnonymousAPI = {
     Login : Request.Login -> Async<Response.JwtToken> // note no Result here!
+    GetPublicMessage : unit -> Async<string>
 }
 with
     static member RouteBuilder _ m = sprintf "/api/anonymous/%s" m
 
 type SecuredAPI = {
     GetUserInfo : unit -> Async<Response.UserInfo> // note no Result here!
+    GetPrivateMessage : unit -> Async<string>
 }
 with
     static member RouteBuilder _ m = sprintf "/api/secured/%s" m

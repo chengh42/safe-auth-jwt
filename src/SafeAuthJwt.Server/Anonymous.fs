@@ -52,6 +52,7 @@ let private login (cfg: Jwt.JwtConfiguration) (req:Request.Login) =
 let private getAnonymousService (cfg:Jwt.JwtConfiguration) =
     {
         Login = login cfg >> Async.AwaitTask
+        GetPublicMessage = fun () -> async { return "This is a public message!" }
     }
 
 let anonymousAPI (cfg:Jwt.JwtConfiguration) =
