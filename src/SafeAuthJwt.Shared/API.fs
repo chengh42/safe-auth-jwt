@@ -6,6 +6,11 @@ module Request =
         Email : string
         Password : string
     }
+    type Register = {
+        Username : string
+        Email : string
+        Password : string
+    }
 
 [<RequireQualifiedAccess>]
 module Response =
