@@ -28,7 +28,7 @@ let LoginView () =
             Html.text "YOU ARE IN!"
 
     Daisy.card [
-        prop.className "p-10 bg-base-200"
+        prop.className "m-10 p-10 bg-base-200"
         prop.children [
             Daisy.formControl [
                 Daisy.label [Daisy.labelText "Email"]
