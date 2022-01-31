@@ -7,11 +7,11 @@ open Fable.Remoting.Server
 open SafeAuthJwt.Shared.API
 open SafeAuthJwt.Shared.Errors
 
-let private register (req: Request.Register) =
-    task {
-        let newUserId = Storage.registerNewUser req
-        return newUserId
-    }
+// let private register (req: Request.Register) =
+//     task {
+//         let newUserId = Storage.registerNewUser req
+//         return newUserId
+//     }
 
 let private login (cfg: Jwt.JwtConfiguration) (req: Request.Login) =
     let userToToken (cfg:Jwt.JwtConfiguration) (user:Storage.DbUser) : Jwt.Token =
