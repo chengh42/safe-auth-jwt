@@ -1,6 +1,6 @@
 # SAFE Authentication with JWT Bearer token
 
-This web app demos authentication using Json Web Token (JWT) following [the tutorial by @Dzoukr](https://github.com/Zaid-Ajaj/Fable.Remoting/blob/master/documentation/src/full-auth-example.md). It is built with the [SAFEr Template](https://github.com/Dzoukr/SAFEr.Template). 
+This web app demos authentication using Json Web Token (JWT) following [the tutorial by @Dzoukr](https://github.com/Zaid-Ajaj/Fable.Remoting/blob/master/documentation/src/full-auth-example.md). It is built with the [SAFEr Template](https://github.com/Dzoukr/SAFEr.Template).
 
 <img src="https://github.com/chengh42/safe-auth-jwt/raw/main/safe-auth-jwt.gif" data-canonical-src="https://github.com/chengh42/safe-auth-jwt/raw/main/safe-auth-jwt.gif" height="300" />
 
@@ -54,7 +54,6 @@ Login credentials:
 
 ## Notes
 
-
 Some notes taken from the tutorial:
 
 > * Exceptions are used for errors, but with well-defined union type inside
@@ -63,3 +62,10 @@ Some notes taken from the tutorial:
 > * Registration neither token refresh is not part of this example, but can be easily added
 > * Database for users and its functions are not implemented, only used "to implement" functions
 > * Authentication is hard - don't do it manually. Use some existing service like Auth0, Azure AD, Identity Server or so.
+
+### Docker
+
+```
+docker build -t safe-auth-jwt .
+docker run -it -p 5000:5000 safe-auth-jwt
+```
