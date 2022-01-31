@@ -27,32 +27,60 @@ let LoginView () =
             Browser.WebStorage.localStorage.setItem("token", resp.Token) // store for later usage
             Html.text "YOU ARE IN!"
 
-    Daisy.card [
-        prop.className "m-10 p-10 bg-base-200"
-        prop.children [
-            Daisy.formControl [
-                Daisy.label [Daisy.labelText "Email"]
-                Daisy.input [
-                    input.bordered; prop.placeholder "Email"
-                    prop.type'.text
-                    prop.onTextChange (fun x -> { loginForm with Email = x } |> setLoginForm)
+    Html.div [
+        Daisy.card [
+            prop.className "m-10 p-10 bg-base-200"
+            prop.children [
+                Daisy.formControl [
+                    Daisy.label [Daisy.labelText "Email"]
+                    Daisy.input [
+                        input.bordered; prop.placeholder "Email"
+                        prop.type'.text
+                        prop.onTextChange (fun x -> { loginForm with Email = x } |> setLoginForm)
+                    ]
                 ]
-            ]
-            Daisy.formControl [
-                Daisy.label [Daisy.labelText "Password"]
-                Daisy.input [
-                    input.bordered; prop.placeholder "Password"
-                    prop.type'.password
-                    prop.onTextChange (fun x -> { loginForm with Password = x } |> setLoginForm)
+                Daisy.formControl [
+                    Daisy.label [Daisy.labelText "Password"]
+                    Daisy.input [
+                        input.bordered; prop.placeholder "Password"
+                        prop.type'.password
+                        prop.onTextChange (fun x -> { loginForm with Password = x } |> setLoginForm)
+                    ]
                 ]
-            ]
-            Daisy.button.button [
-                button.primary
-                prop.text "LOGIN"
-                if Deferred.inProgress loginReq then prop.disabled true
-                prop.onClick login
-            ]
+                Daisy.button.button [
+                    button.primary
+                    prop.className "mt-10"
+                    prop.text "LOGIN"
+                    if Deferred.inProgress loginReq then prop.disabled true
+                    prop.onClick login
+                ]
 
-            result
+                result
+            ]
+        ]
+
+        Daisy.card [
+            prop.className "m-10 p-10"
+            prop.children [
+                Daisy.labelText "Available credentials"
+                Html.ul [
+                    Html.li [
+                        Html.span [
+                            Html.text "Email: "
+                            Html.code "bob@fsharp.net"
+                            Html.text " & Password: "
+                            Html.code "Str0ngP@zzword4Bob"
+                        ]
+                    ]
+                    Html.li [
+                        Html.span [
+                            Html.text "Email: "
+                            Html.code "alice@fsharp.net"
+                            Html.text " & Password: "
+                            Html.code "Str0ngP@zzword4Alice"
+                        ]
+                    ]
+                ]
+            ]
         ]
     ]
