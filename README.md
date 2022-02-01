@@ -20,23 +20,9 @@ Before you run the project **for the first time only** you must install dotnet "
 dotnet tool restore
 ```
 
-### 2. Define claims
+### 2. Define JWT configuration
 
-Navigate to `src/Server/Startup.fs` and define claims. Below is a simplistic example:
-
-```fsharp
-type Startup(cfg:IConfiguration, evn:IWebHostEnvironment) =
-    // read values from config or ENV vars
-    let cfg =
-        {
-            Audience = "a non-null string"
-            Issuer = "a non-null string"
-            Secret = "q4t7w!z%C*F-JaNdRgUkXn2r5u8x/A?D" // Note that secret has to be 128-bit min
-            AccessTokenLifetime = TimeSpan.FromMinutes 10.
-        }
-
-    (...)
-```
+Go to `src/Server/appsettings.Development.json` and use your own JWT configuration.
 
 ### 3. Run the app
 

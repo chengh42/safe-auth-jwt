@@ -11,9 +11,9 @@ open Giraffe
 type Startup(cfg:IConfiguration, env:IWebHostEnvironment) =
     // read values from config or ENV vars
     let cfgJwt : Jwt.JwtConfiguration = {
-        Audience = "a non-null string" // cfg.["JwtAudience"]
-        Issuer = "a non-null string" // cfg.["JwtIssuer"]
-        Secret = "q4t7w!z%C*F-JaNdRgUkXn2r5u8x/A?D" // cfg.["JwtSecret"]
+        Audience = cfg.["JwtAudience"]
+        Issuer = cfg.["JwtIssuer"]
+        Secret = cfg.["JwtSecret"]
         AccessTokenLifetime = TimeSpan.FromMinutes 10.
     }
 
