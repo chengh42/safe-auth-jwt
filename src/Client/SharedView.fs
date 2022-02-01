@@ -1,4 +1,4 @@
-﻿module SafeAuthJwt.Client.SharedView
+﻿module SharedView
 
 open Feliz
 open Router

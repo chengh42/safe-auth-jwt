@@ -1,11 +1,11 @@
-module SafeAuthJwt.Server.Anonymous
+module Anonymous
 
 open System.Security.Claims
 open Fable.Remoting.Giraffe
 open Fable.Remoting.Server
 
-open SafeAuthJwt.Shared.API
-open SafeAuthJwt.Shared.Errors
+open Shared.API
+open Shared.Errors
 
 // let private register (req: Request.Register) =
 //     task {
@@ -43,5 +43,5 @@ let anonymousAPI (cfg:Jwt.JwtConfiguration) =
     Remoting.createApi()
     |> Remoting.withRouteBuilder AnonymousAPI.RouteBuilder
     |> Remoting.fromValue (getAnonymousService cfg)
-    |> Remoting.withErrorHandler SafeAuthJwt.Server.Remoting.Remoting.errorHandler // see? we use our error handler here!
+    |> Remoting.withErrorHandler Remoting.Remoting.errorHandler // see? we use our error handler here!
     |> Remoting.buildHttpHandler

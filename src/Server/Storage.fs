@@ -1,4 +1,4 @@
-module SafeAuthJwt.Server.Storage
+module Storage
 
 type DbUser = {
     Id: System.Guid
@@ -9,7 +9,7 @@ type DbUser = {
 
 let users : ResizeArray<DbUser> = ResizeArray()
 
-let registerNewUser (req: SafeAuthJwt.Shared.API.Request.Register) =
+let registerNewUser (req: Shared.API.Request.Register) =
     let userId = System.Guid.NewGuid ()
     let user =
         { Id = userId

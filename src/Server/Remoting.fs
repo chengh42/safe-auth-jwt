@@ -1,9 +1,9 @@
-module SafeAuthJwt.Server.Remoting
+module Remoting
 
 open System
 open Fable.Remoting.Server
 open Microsoft.AspNetCore.Http
-open SafeAuthJwt.Shared.Errors
+open Shared.Errors
 
 [<RequireQualifiedAccess>]
 module Remoting =

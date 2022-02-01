@@ -16,4 +16,4 @@ FROM mcr.microsoft.com/dotnet/aspnet:6.0-alpine
 COPY --from=build /workspace/publish/app /app
 WORKDIR /app
 EXPOSE 5000
-ENTRYPOINT [ "dotnet", "SafeAuthJwt.Server.dll" ]
+ENTRYPOINT [ "dotnet", "Server.dll" ]

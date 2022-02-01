@@ -1,17 +1,16 @@
-module SafeAuthJwt.Client.Pages.MyProfile
+module Pages.MyProfile
 
 open Feliz
 open Feliz.DaisyUI
 open Feliz.UseDeferred
-open SafeAuthJwt.Shared.Errors
-open SafeAuthJwt.Client
+open Shared.Errors
 
 let displayStronglyTypedError = function
     // choose how to display errors based on your needs
     | ServerError.Exception x -> Html.text x
     | ServerError.Authentication x -> Html.div x
 
-let getUserInfo = fun (securedApi: SafeAuthJwt.Shared.API.SecuredAPI) ->
+let getUserInfo = fun (securedApi: Shared.API.SecuredAPI) ->
     securedApi.GetUserInfo()
 
 [<ReactComponent>]

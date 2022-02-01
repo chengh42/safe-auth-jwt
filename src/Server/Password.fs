@@ -1,4 +1,4 @@
-module SafeAuthJwt.Server.Password
+module Password
 
 open System
 open System.Runtime.CompilerServices

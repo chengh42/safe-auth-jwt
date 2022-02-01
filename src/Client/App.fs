@@ -1,4 +1,4 @@
-module SafeAuthJwt.Client.App
+module App
 
 open Elmish
 open Elmish.React

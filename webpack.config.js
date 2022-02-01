@@ -24,11 +24,11 @@ const isDevelopment = !isProduction
 var CONFIG = {
     // The tags to include the generated JS and CSS will be automatically injected in the HTML template
     // See https://github.com/jantimon/html-webpack-plugin
-    indexHtmlTemplate: './src/SafeAuthJwt.Client/index.html',
+    indexHtmlTemplate: './src/Client/index.html',
     fsharpEntry: './.fable-build/App.js',
-    cssEntry: './src/SafeAuthJwt.Client/styles/styles.css',
+    cssEntry: './src/Client/styles/styles.css',
     outputDir: './publish/app/public',
-    assetsDir: './src/SafeAuthJwt.Client/public',
+    assetsDir: './src/Client/public',
     devServerPort: 8080,
     // When using webpack-dev-server, you may need to redirect some calls
     // to a external API server. See https://webpack.js.org/configuration/dev-server/#devserver-proxy

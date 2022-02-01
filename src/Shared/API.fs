@@ -1,4 +1,4 @@
-﻿module SafeAuthJwt.Shared.API
+﻿module Shared.API
 
 [<RequireQualifiedAccess>]
 module Request =

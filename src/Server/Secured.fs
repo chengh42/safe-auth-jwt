@@ -1,11 +1,11 @@
-module SafeAuthJwt.Server.Secured
+module Secured
 
 open Fable.Remoting.Giraffe
 open Fable.Remoting.Server
 open Microsoft.AspNetCore.Http
 
-open SafeAuthJwt.Shared.API
-open SafeAuthJwt.Shared.Errors
+open Shared.API
+open Shared.Errors
 
 let private userToResponse (user: Storage.DbUser) : Response.UserInfo =
     {
@@ -33,5 +33,5 @@ let securedAPI : Giraffe.Core.HttpHandler =
     Remoting.createApi()
     |> Remoting.withRouteBuilder SecuredAPI.RouteBuilder
     |> Remoting.fromContext getSecuredService // <-- we need context here
-    |> Remoting.withErrorHandler SafeAuthJwt.Server.Remoting.Remoting.errorHandler // see? we use our error handler here!
+    |> Remoting.withErrorHandler Remoting.Remoting.errorHandler // see? we use our error handler here!
     |> Remoting.buildHttpHandler

@@ -1,4 +1,4 @@
-﻿module SafeAuthJwt.Client.Router
+﻿module Router
 
 open Browser.Types
 open Feliz.Router

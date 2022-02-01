@@ -1,9 +1,9 @@
-﻿module SafeAuthJwt.Client.Server
+﻿module Server
 
 open Fable.Remoting.Client
 open Fable.SimpleJson
-open SafeAuthJwt.Shared.API
-open SafeAuthJwt.Shared.Errors
+open Shared.API
+open Shared.Errors
 
 let exnToError (e:exn) : ServerError =
     match e with
@@ -28,8 +28,3 @@ let onSecuredAPI (fn:SecuredAPI -> Async<'a>) =
     |> Remoting.withAuthorizationHeader (sprintf "Bearer %s" token)
     |> Remoting.buildProxy<SecuredAPI>
     |> fn
-
-// let service =
-//     Remoting.createApi()
-//     |> Remoting.withRouteBuilder Service.RouteBuilder
-//     |> Remoting.buildProxy<Service>

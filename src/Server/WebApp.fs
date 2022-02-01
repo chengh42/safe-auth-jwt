@@ -1,10 +1,10 @@
-﻿module SafeAuthJwt.Server.WebApp
+﻿module WebApp
 
 open Giraffe
 open Fable.Remoting.Server
 open Fable.Remoting.Giraffe
 open Microsoft.AspNetCore.Authentication.JwtBearer
-open SafeAuthJwt.Shared.API
+open Shared.API
 
 let private mustBeLoggedIn : HttpHandler =
     requiresAuthentication (RequestErrors.UNAUTHORIZED JwtBearerDefaults.AuthenticationScheme "" "User not logged in")

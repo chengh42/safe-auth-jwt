@@ -4,13 +4,13 @@
         "prestart": "dotnet tool restore",
         "start": "cross-os start",
         "prebuild": "dotnet tool restore",
-        "build": "dotnet fable ./src/SafeAuthJwt.Client --outDir ./.fable-build && webpack"
+        "build": "dotnet fable ./src/Client --outDir ./.fable-build && webpack"
     },
     "cross-os": {
         "start": {
-            "darwin": "NODE_ENV=development dotnet fable watch ./src/SafeAuthJwt.Client --outDir ./.fable-build --run webpack serve",
-            "linux": "NODE_ENV=development dotnet fable watch ./src/SafeAuthJwt.Client --outDir ./.fable-build --run webpack serve",
-            "win32": "set NODE_ENV=development& dotnet fable watch ./src/SafeAuthJwt.Client --outDir ./.fable-build --run webpack serve"
+            "darwin": "NODE_ENV=development dotnet fable watch ./src/Client --outDir ./.fable-build --run webpack serve",
+            "linux": "NODE_ENV=development dotnet fable watch ./src/Client --outDir ./.fable-build --run webpack serve",
+            "win32": "set NODE_ENV=development& dotnet fable watch ./src/Client --outDir ./.fable-build --run webpack serve"
         }
     },
     "devDependencies": {

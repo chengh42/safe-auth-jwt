@@ -1,4 +1,4 @@
-module SafeAuthJwt.Shared.Errors
+module Shared.Errors
 
 type ServerError =
     | Exception of string

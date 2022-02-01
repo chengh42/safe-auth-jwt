@@ -1,4 +1,4 @@
-module SafeAuthJwt.Server.Jwt
+module Jwt
 
 open System
 open System.IdentityModel.Tokens.Jwt

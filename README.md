@@ -22,7 +22,7 @@ dotnet tool restore
 
 ### 2. Define claims
 
-Navigate to `src/SafeAuthJwt.Server/Startup.fs` and define claims. Below is a simplistic example:
+Navigate to `src/Server/Startup.fs` and define claims. Below is a simplistic example:
 
 ```fsharp
 type Startup(cfg:IConfiguration, evn:IWebHostEnvironment) =

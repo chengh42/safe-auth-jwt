@@ -1,10 +1,9 @@
-﻿module SafeAuthJwt.Client.Pages.Index
+﻿module Pages.Index
 
 open Feliz
 open Feliz.DaisyUI
 open Elmish
 open Feliz.UseElmish
-open SafeAuthJwt.Client
 
 type State = {
     Message : string
@@ -23,7 +22,7 @@ let update (msg:Msg) (model:State) : State * Cmd<Msg> =
     | AskForPublicMessage ->
         model, Cmd.OfAsync.perform Server.anonymousAPI.GetPublicMessage () MessageReceived
     | AskForPrivateMessage ->
-        let getPrivateMessage = fun (securedApi: SafeAuthJwt.Shared.API.SecuredAPI) ->
+        let getPrivateMessage = fun (securedApi: Shared.API.SecuredAPI) ->
             securedApi.GetPrivateMessage ()
         model, Cmd.OfAsync.either (fun _ -> Server.onSecuredAPI getPrivateMessage) ()
             MessageReceived ErrorReceived

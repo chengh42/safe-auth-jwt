@@ -1,4 +1,4 @@
-﻿module SafeAuthJwt.Server.Startup
+﻿module Startup
 
 open System
 open Microsoft.AspNetCore.Authentication.JwtBearer

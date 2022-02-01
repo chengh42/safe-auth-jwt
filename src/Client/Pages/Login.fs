@@ -1,10 +1,9 @@
-module SafeAuthJwt.Client.Pages.Login
+module Pages.Login
 
 open Feliz
 open Feliz.DaisyUI
 open Feliz.UseDeferred
-open SafeAuthJwt.Shared.Errors
-open SafeAuthJwt.Client
+open Shared.Errors
 
 let displayStronglyTypedError = function
     // choose how to display errors based on your needs
@@ -13,7 +12,7 @@ let displayStronglyTypedError = function
 
 [<ReactComponent>]
 let LoginView () =
-    let req : SafeAuthJwt.Shared.API.Request.Login = { Email = ""; Password = "" }
+    let req : Shared.API.Request.Login = { Email = ""; Password = "" }
     let loginForm,setLoginForm = React.useState(req)
     let loginReq, setLoginReq = React.useState(Deferred.HasNotStartedYet)
     let login = React.useDeferredCallback ((fun _ -> Server.anonymousAPI.Login loginForm), setLoginReq)
